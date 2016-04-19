@@ -3,10 +3,12 @@
   <p>{{post.body}}</p>
 </div>
 <div ng-repeat="comment in post.comments">
-  by {{comment.author}}
+  <span class="glyphicon glyphicon-thumbs-up"
+        ng-click="incrementUpvotes(comment)"></span>
+      {{comment.votes}} - by {{comment.author}}
   <span style="font-size:20px; margin-left:10px;">
-      {{comment.body}}
-    </span>
+    {{comment.body}}
+  </span>
 </div>
 <form ng-submit="addComment()" style="margin-top:30px;">
   <h3>Add a new comment</h3>
