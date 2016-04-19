@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>rails example</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body ng-app="railsEx">
+  <div class="container">
+    <div class="col-md-offset-3">
+      <ui-view></ui-view>
+    </div>
+  </div>  
+</body>
+</html>
