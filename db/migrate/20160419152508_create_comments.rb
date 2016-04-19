@@ -3,7 +3,7 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.string :body, null: false
       t.references :post, index: true, foreign_key: true
-      t.integer :vote, default: 0
+      t.integer :votes, default: 0
 
       t.timestamps null: false
     end
