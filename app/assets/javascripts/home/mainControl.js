@@ -8,10 +8,9 @@ angular.module('railsEx')
         if (!$scope.title || !$scope.body || $scope.title === '' || $scope.body === '') {
           return;
         }
-        $scope.posts.push({
+        posts.createPost({
           title: $scope.title,
           body: $scope.body,
-          comments: []
         });
         $scope.title = '';
         $scope.body = '';
