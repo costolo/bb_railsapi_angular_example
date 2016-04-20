@@ -1,27 +1,29 @@
 angular.module('railsEx')
   .controller('PostsCtrl', [
     '$scope',
-    '$stateParams',
+    'post',
     'posts',
-    function($scope, $stateParams, posts) {
-      $scope.post = posts.posts[$stateParams.id];
+    function($scope, post, posts) {
+      $scope.post = post;
       $scope.addComment = function() {
-        if ($scope.body === '') {
-          return;
-        }
-        $scope.post.comments.push({
-          body: $scope.body,
-          author: $scope.author,
-          votes: 0
+        if ($scope.body === '') { return; }
+        posts.createComment(post.id, {
+          body: $scope.body
+        }).then(function(res) {
+          $scope.post.comments.push({
+            body: res.data.body,
+            // author: $scope.author,
+            votes: res.data.votes
+          });
         });
         $scope.body = '';
         $scope.author = '';
       };
       $scope.incrementVotes = function(comment) {
-        comment.votes += 1;
+        posts.upvoteComment(post, comment);
       };
       $scope.decrementVotes = function(comment) {
-        comment.votes -= 1;
+        posts.downvoteComment(post, comment);
       };
     }
   ]);
