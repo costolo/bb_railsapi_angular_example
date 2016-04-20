@@ -1,4 +1,4 @@
-angular.module('railsEx', ['ui.router', 'templates'])
+angular.module('railsEx', ['ui.router', 'templates', 'Devise'])
   .config([
     '$stateProvider',
     '$urlRouterProvider',
