@@ -3,6 +3,6 @@ class Post < ActiveRecord::Base
   validates :title, :body, presence: true
 
   def as_json(options={})
-    super(options.merge(include: comments))
+    super(options.merge(include: :comments))
   end
 end
