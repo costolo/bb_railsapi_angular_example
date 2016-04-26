@@ -10,6 +10,7 @@
     {{comment.body}}
   </span>
 </div>
+<a href="#/login" ng-hide="signedIn()">sign in to comment on this post</a>
 <form ng-show="signedIn()" ng-submit="addComment()" style="margin-top:30px;">
   <h3>Add a new comment</h3>
   <div class="form-group">
