@@ -7,6 +7,8 @@ angular.module('railsEx')
       $scope.login = function() {
         Auth.login($scope.user).then(function() {
           $state.go('home');
+        }, function(error) {
+          console.log(error.data.error);
         });
       };
 
