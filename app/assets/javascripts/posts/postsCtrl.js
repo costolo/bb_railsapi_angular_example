@@ -3,16 +3,22 @@ angular.module('railsEx')
     '$scope',
     'post',
     'posts',
-    function($scope, post, posts) {
+    'Auth',
+    function($scope, post, posts, Auth) {
+      $scope.signedIn = Auth.isAuthenticated;
+      Auth.currentUser().then(function(user) {
+        $scope.user = user;
+      });
       $scope.post = post;
       $scope.addComment = function() {
         if ($scope.body === '') { return; }
         posts.createComment(post.id, {
-          body: $scope.body
+          body: $scope.body,
+          author: $scope.user.name
         }).then(function(res) {
           $scope.post.comments.push({
             body: res.data.body,
-            // author: $scope.author,
+            author: $scope.user.name,
             votes: res.data.votes
           });
         });
