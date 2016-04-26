@@ -14,16 +14,15 @@ angular.module('railsEx')
         if ($scope.body === '') { return; }
         posts.createComment(post.id, {
           body: $scope.body,
-          author: $scope.user.name
+          author: $scope.user.username
         }).then(function(res) {
           $scope.post.comments.push({
             body: res.data.body,
-            author: $scope.user.name,
+            author: $scope.user.username,
             votes: res.data.votes
           });
         });
         $scope.body = '';
-        $scope.author = '';
       };
       $scope.incrementVotes = function(comment) {
         posts.upvoteComment(post, comment);
