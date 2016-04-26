@@ -10,11 +10,8 @@
     {{comment.body}}
   </span>
 </div>
-<form ng-submit="addComment()" style="margin-top:30px;">
+<form ng-show="signedIn()" ng-submit="addComment()" style="margin-top:30px;">
   <h3>Add a new comment</h3>
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="name" ng-model="author"></input>
-  </div>
   <div class="form-group">
     <input type="text" class="form-control" placeholder="comment" ng-model="body"></input>
   </div>
