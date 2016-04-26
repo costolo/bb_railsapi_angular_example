@@ -19,7 +19,8 @@ angular.module('railsEx')
           $scope.post.comments.push({
             body: res.data.body,
             author: $scope.user.username,
-            votes: res.data.votes
+            votes: res.data.votes,
+            id: res.data.id
           });
         });
         $scope.body = '';
